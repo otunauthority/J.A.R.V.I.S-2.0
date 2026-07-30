@@ -1,7 +1,7 @@
 {
   "description": "Put your audio files in media/audio/ and videos in media/video/, then list them here. Paths are relative to the site root.",
-  "audio": ["Graduation Songs  A Song for Every Graduate (2026).mp3"," Winter - by AShamaluevMusic  Inspirational Winter Music.mp3" ,"Epic Inspiring Symphonic Strings #backgroundmusic #classicalmusic #epicmusic #strings.mp3 ","Little Wonders.mp3" ,"A New Beginning, Across all time (GRADUATION SONG 2025).mp3","Video Concept From Little Steps to.txt"],
-  "video": ["78 Very × Rapid × Reproduction.mp4","79 No × Good × NGL.mp4","80 Evil × And × Terrible.mp481"]
+  "audio": ["A New Beginning, Across all time (GRADUATION SONG 2025).mp3"],
+  "video": []
   
 }
 
