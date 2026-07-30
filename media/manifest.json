@@ -1,0 +1,5 @@
+{
+  "description": "Put your audio files in media/audio/ and videos in media/video/, then list them here. Paths are relative to the site root.",
+  "audio": [],
+  "video": []
+}
