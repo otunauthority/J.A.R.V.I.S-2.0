@@ -1,8 +1,26 @@
 # J.A.R.V.I.S. — Questions & Commands Note
 
-You are addressed as **Epidexios** (sometimes Sir / Master Epidexios).
+Built for **Otun Authority**. You are addressed as **Epidexios** (sometimes Sir / Master Epidexios).
 
 **Category · Example triggers · What you get**
+
+---
+
+## Holographic reports (Iron Man style)
+
+| Category | Example triggers | What you get |
+|----------|------------------|--------------|
+| **Status hologram** | status report, status, systems | Full holographic status panel — integrity, device power, CPU, network, threat level, voice mode |
+| **Power hologram** | power levels, power, reactor, energy, check battery | Amber energy matrix. Uses **live battery %** when the browser allows it; on most phones the Battery API is blocked for privacy — still shows the matrix with a clear “estimated / API blocked” note |
+| **Diagnostics hologram** | run diagnostics, diagnostics, system scan | System integrity scan with pass/fail rows and meters |
+| **Secure hologram** | secure mode, lockdown | Red defensive posture panel |
+| **Combat mode** | combat mode, engage combat, combat protocol, weapons hot, battle mode | Full tactical HUD — spinning radar, targeting reticle, weapons status, threat board |
+| **Suit report** | suit report, armour report, armor report, suit scan, suit status, mark suit, deploy suit, initiate suit | Full Iron Man–style armour schematic with scanning beam, lit suit parts, and sequential subsystem checklist |
+
+**Close a hologram** with **×**, backdrop click, **Escape**, or by voice:  
+`close hologram` · `dismiss report` · `close report` · `hide panel` · `clear hologram`
+
+Panels auto-dismiss after ~14–22 seconds (suit report lasts longer).
 
 ---
 
@@ -115,11 +133,18 @@ You are addressed as **Epidexios** (sometimes Sir / Master Epidexios).
 | Category | Example triggers | What you get |
 |----------|------------------|--------------|
 | Password | generate a password | Random password |
-| Battery | check battery | Level if API allows |
+| Battery | check battery, battery level | Real % + **power hologram** |
 | Storage | show storage | Browser storage estimate |
 | Open site | open YouTube, open Google | New tab |
-| Status / power / diagnostics | status report, power levels, run diagnostics | System replies |
-| Secure | secure mode | Lockdown reply |
+| Status | status report, status, systems | Spoken reply **+ status hologram** |
+| Power | power levels, power, reactor, energy | Spoken reply **+ power hologram** (real battery when available) |
+| Diagnostics | run diagnostics, diagnostics, system scan | Spoken reply **+ diagnostics hologram** |
+| Suit report | suit report, armour report, suit scan, mark suit, deploy suit | Spoken reply **+ Iron Man suit schematic hologram** |
+| Combat mode | combat mode, engage combat, combat protocol, weapons hot, battle mode | Spoken reply **+ tactical combat HUD** (radar, weapons, threat board) |
+| Secure | secure mode, lockdown | Spoken reply **+ secure/red hologram** |
+| Close hologram | close hologram, dismiss report, close report, hide panel, clear hologram | Dismisses any open holographic panel |
+| Show panel (mobile) | show schedule, show weather, show actions, show media, show diagnostics, show data system, show modules, show network, show all | Summons that UI sheet over ambient mode |
+| Hide panel (mobile) | hide schedule, hide weather, hide modules, hide all, ambient mode, minimal mode | Dismisses sheets; ambient core-only view |
 | Hands-free | hands-free mode / hands-free off | Continuous voice on/off |
 
 ---
@@ -128,7 +153,7 @@ You are addressed as **Epidexios** (sometimes Sir / Master Epidexios).
 
 | Category | Example triggers / action | What you get |
 |----------|---------------------------|--------------|
-| **Select files** | Button **Select files**, or say `select files` / `pick files` | File picker — choose any audio/video |
+| **Select files** | Button **Select files**, dock **Media**, or say `select files` / `pick files` / `load media` | File picker — any audio/video on device |
 | **Open folder** | Button **Open folder**, or `open media folder` | Folder of media files |
 | **Project media** | Files in `media/audio` & `media/video` + `manifest.json` | Auto-loaded on startup |
 | **Click to play** | Tap a file in the Media Library list | Plays that file |
@@ -145,17 +170,51 @@ Supported types: mp3, wav, ogg, m4a, aac, flac, mp4, webm, mov, mkv (browser-dep
 
 ---
 
-## UI controls (still available)
+## UI controls
 
 | Action | How |
 |--------|-----|
 | Type | Bottom console + Enter |
-| Voice | Mic button, dock Voice, or Space |
+| Voice | Mic button, dock Voice, **V** key, or **Space** (desktop) |
+| Close hologram | × · backdrop · Escape · voice (`close hologram`, `dismiss report`, `hide panel`) |
 | Mobile menu | Dock **Menu** — grouped command buttons |
 | Media card | Select files / Open folder / filter / tap track |
 | Now Playing | Play, pause, next, prev, stop, seek |
+| **Holograms** | status · power · diagnostics · **suit report** · **combat mode** · secure — close with ×, backdrop, Escape, or voice |
+| **Mobile panels** | `show schedule` · `show weather` · `show media` · `show modules` · `show data system` · `hide all` (ambient) |
 
-*(The top chip bar — Hello, Time, Date, etc. — has been removed.)*
+---
+
+## Mobile
+
+- **Ambient mode by default** — only top status bar, holographic core animation, command bar, and bottom dock. No floating cards or side panels until you summon them.
+- Bottom **dock**: Status · Media · Voice · Menu · Help  
+- Slide-up **command menu** with grouped shortcuts  
+- Holograms scale to the screen; decorative rings hide on small displays for performance  
+- Soft UI tones when a hologram opens (Web Audio)  
+
+### Show / hide panels (mobile)
+
+| Command | Result |
+|---------|--------|
+| `show schedule` / `show calendar` / `show agenda` | Schedule card |
+| `show weather` / `show forecast` | Weather card |
+| `show actions` / `show quick actions` | Quick Actions card |
+| `show media` / `show media library` | Media Library card |
+| `show now playing` | Now Playing card |
+| `show diagnostics` / `show data stream` / `show data system` | System diagnostics + data stream panel |
+| `show modules` / `show network` / `show network activity` | Modules + network activity panel |
+| `show all` / `show everything` / `show full ui` | All panels and cards |
+| `hide schedule` / `hide calendar` | Hide schedule |
+| `hide weather` | Hide weather |
+| `hide actions` / `hide quick actions` | Hide quick actions |
+| `hide media` | Hide media library |
+| `hide now playing` | Hide now playing |
+| `hide diagnostics` / `hide data stream` / `hide data system` | Hide diagnostics panel |
+| `hide modules` / `hide network` | Hide modules / network panel |
+| `hide all` / `hide panels` / `hide cards` / `ambient mode` / `minimal mode` | Clear everything — pure core animation |
+
+One card or side panel at a time (a new **show** replaces the previous sheet of the same type). Desktop keeps the full layout always visible.
 
 ---
 
@@ -166,6 +225,8 @@ python -m http.server 8080
 ```
 
 Open `http://localhost:8080` or your GitHub Pages HTTPS URL.
+
+> Microphone and Battery Status API work best on **HTTPS** or **localhost** in Chrome / Edge.
 
 ---
 
